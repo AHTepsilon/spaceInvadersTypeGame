@@ -10,7 +10,7 @@ public class laser
 	{
 		this.laserX = player.x;
 		this.laserY1 = 0;
-		this.laserY2 = 395;
+		this.laserY2 = 415;
 		
 		isActive = false;
 	}

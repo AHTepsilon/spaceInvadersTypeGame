@@ -1,14 +1,17 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class weakEnemies 
 {
-	private int posX, posY, size, moveRate;
+	private int posX, posY, moveRate;
+	PImage weakEnemy;
 
 	public weakEnemies(int posX, int posY, int size, PApplet app) 
 	{
+		weakEnemy = app.loadImage("alien_green.png");
+		
 		this.posX = posX;
 		this.posY = posY;
-		this.size = size;
 		
 		moveRate = 1;
 	}
@@ -18,10 +21,11 @@ public class weakEnemies
 		posY += moveRate;
 	}
 	
+	@SuppressWarnings("static-access")
 	public void draw(PApplet app)
 	{
-		app.fill(0, 255, 0);
-		app.square(posX, posY, size);
+		app.imageMode(app.CENTER);
+		app.image(weakEnemy, posX, posY);
 		mov();
 	}
 	
@@ -34,5 +38,16 @@ public class weakEnemies
 	{
 		this.posX = posX;
 	}
+	
+	public int getPosY() 
+	{
+		return posY;
+	}
+	
+	public void setPosY(int posY) 
+	{
+		this.posY = posY;
+	}
+	
 
 }

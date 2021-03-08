@@ -1,19 +1,17 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 
-public class strongEnemies 
+public class strongEnemies
 {
-	private int posX, posY, size, moveRate;
-	boolean hitOnce, hitTwice;
+	private int posX, posY, moveRate;
+	PImage strongEnemy;
 
 	public strongEnemies(int posX, int posY, int size, PApplet app) 
 	{
+		strongEnemy = app.loadImage("blue_alien.png");
+		
 		this.posX = posX;
 		this.posY = posY;
-		this.size = size;
-		
-		hitOnce = false; 
-		hitTwice = false;
-		
 		moveRate = 2;
 	}
 	
@@ -22,10 +20,11 @@ public class strongEnemies
 		posY += moveRate;
 	}
 	
+	@SuppressWarnings("static-access")
 	public void draw(PApplet app)
 	{
-		app.fill(0, 0, 255);
-		app.square(posX, posY, size);
+		app.imageMode(app.CENTER);
+		app.image(strongEnemy, posX, posY);
 		mov();
 	}
 	
@@ -38,24 +37,16 @@ public class strongEnemies
 	{
 		this.posX = posX;
 	}
+	
+	public int getPosY() 
+	{
+		return posY;
+	}
+	
+	public void setPosY(int posY) 
+	{
+		this.posY = posY;
+	}
+	
 
-	public boolean hitOnce() 
-	{
-		return this.hitOnce;
-	}
-	
-	public void setHitOnce(boolean active) 
-	{
-		this.hitOnce = active;
-	}
-	
-	public boolean hitTwice() 
-	{
-		return this.hitTwice;
-	}
-	
-	public void setHitTwo(boolean active) 
-	{
-		this.hitTwice = active;
-	}
 }

@@ -1,13 +1,18 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class player 
 {
 	public static int x; 
 	int yBig, ySmall;
 	int sizeBig, sizeSmallX, sizeSmallY;
+	PImage spaceship;
 	
-	public player() 
+	@SuppressWarnings("static-access")
+	public player(PApplet app) 
 	{
+		spaceship = app.loadImage("spaceship_v2.png");
+		
 		this.x = 240;
 		this.yBig = 430;
 		this.sizeBig = 50;
@@ -20,11 +25,8 @@ public class player
 	@SuppressWarnings("static-access")
 	public void paint(PApplet app)
 	{
-		app.rectMode(app.CENTER);
-		app.fill(255, 0, 0);
-		app.rect(x, ySmall, sizeSmallX, sizeSmallY);
-		app.square(x, yBig, sizeBig);
-		
+		app.imageMode(app.CENTER);
+		app.image(spaceship, x, yBig);
 
 	}
 	
@@ -63,5 +65,15 @@ public class player
 		{
 			x = 25;
 		}
+	}
+	
+	public int getyBig()
+	{
+		return yBig;
+	}
+	
+	public void setyBig(int yBig) 
+	{
+		this.yBig = yBig;
 	}
 }
