@@ -214,7 +214,15 @@ public class Principal extends PApplet
 	{
 		for(int i = 0; i < strongEn.size(); i++)
 		{
-			if(weakEn.get(i).getPosY() > 490 || strongEn.get(i).getPosY() > 490)
+			if(strongEn.get(i).getPosY() > 490)
+			{
+				System.out.println("game over");
+				gameOver = true;
+			}
+		}
+		for(int i = 0; i < weakEn.size(); i++)
+		{
+			if(weakEn.get(i).getPosY() > 490)
 			{
 				System.out.println("game over");
 				gameOver = true;
